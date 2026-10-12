@@ -4,3 +4,4 @@ build-*/
 .idea/
 Testing/
 *.user
+.playwright-mcp/

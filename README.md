@@ -112,7 +112,19 @@ ctest --test-dir build-stub --output-on-failure
 
 CI ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)): сборка и тесты на `ubuntu-latest` и `windows-latest`, плюс отдельный джоб, который **проверяет, что на заглушках тесты падают**.
 
-Скриншоты — в [`docs/img/`](docs/img).
+### Скриншоты
+
+**GitHub Actions** — все джобы зелёные (ubuntu, windows, проверка «на заглушках тесты падают»):
+
+![GitHub Actions](docs/img/github_actions.png)
+
+**Эталон (`DS_USE_REFERENCE=ON`)** — 55 из 55 тестов пройдено:
+
+![ctest reference](docs/img/ctest_reference_green.png)
+
+**Заглушки (`DS_USE_REFERENCE=OFF`)** — 53 из 55 тестов падают (TDD, red):
+
+![ctest stubs](docs/img/stubs_red.png)
 
 ## Структура
 

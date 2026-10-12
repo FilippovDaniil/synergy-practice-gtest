@@ -1,5 +1,6 @@
 Скриншоты для отчёта:
 
-- clion_test_runner.png — CLion Test Runner, все тесты зелёные
 - github_actions.png — GitHub Actions, зелёный прогон
-- stubs_red.png — запуск с DS_USE_REFERENCE=OFF, тесты красные
+- ctest_reference_green.png — ctest с DS_USE_REFERENCE=ON, 55/55 зелёные
+- stubs_red.png — ctest с DS_USE_REFERENCE=OFF, 53/55 красные
+- clion_test_runner.png — CLion Test Runner (добавляется вручную)
