@@ -118,7 +118,13 @@ CI ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)): сборка и т�
 
 ![GitHub Actions](docs/img/github_actions.png)
 
-**Эталон (`DS_USE_REFERENCE=ON`)** — 55 из 55 тестов пройдено:
+**CLion Test Runner** — 55 из 55 тестов пройдено (дерево тестов, две части):
+
+![CLion Test Runner, часть 1](docs/img/clion_test_runner_1.png)
+
+![CLion Test Runner, часть 2](docs/img/clion_test_runner_2.png)
+
+**Эталон (`DS_USE_REFERENCE=ON`), консоль `ctest`** — 55 из 55 тестов пройдено:
 
 ![ctest reference](docs/img/ctest_reference_green.png)
 
