@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: tests (${{ matrix.os }}, reference)
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure
+        run: cmake -S . -B build -DDS_USE_REFERENCE=ON -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --config Release --parallel
+
+      - name: Test
+        run: ctest --test-dir build -C Release --output-on-failure
+
+  stubs-must-fail:
+    # Демонстрация TDD: на заглушках тесты обязаны падать
+    name: tests on stubs (expected red)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure
+        run: cmake -S . -B build-stub -DDS_USE_REFERENCE=OFF -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build-stub --parallel
+
+      - name: Tests must fail
+        run: |
+          if ctest --test-dir build-stub --output-on-failure > ctest.log 2>&1; then
+            echo "::error::Tests passed on stubs — tests do not check anything"
+            exit 1
+          fi
+          grep -E "tests passed|tests failed" ctest.log
