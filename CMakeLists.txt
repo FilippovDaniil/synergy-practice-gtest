@@ -45,6 +45,7 @@ add_executable(ds_tests
     tests/smoke_test.cpp
     tests/queue_test.cpp
     tests/heap_test.cpp
+    tests/binary_tree_test.cpp
 )
 target_include_directories(ds_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 target_link_libraries(ds_tests PRIVATE ds_impl GTest::gtest_main)
